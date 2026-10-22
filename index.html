@@ -22,7 +22,8 @@
       </nav>
       <div class="sidebar-bottom">
         <div class="streak-card"><div class="streak-icon">☀</div><div><strong id="streakCount">3 天</strong><small>连续记录</small></div><span>↗</span></div>
-        <button class="settings"><span>⚙</span> 设置</button>
+        <button class="settings" id="backupBtn"><span>↥</span> 本地备份</button>
+        <button class="settings" id="restoreBtn"><span>↧</span> 恢复备份</button>
         <div class="profile"><div class="avatar">林</div><div><strong>林小满</strong><small>我的日记</small></div><span>•••</span></div>
       </div>
     </aside>
@@ -38,6 +39,7 @@
   </div>
 
   <div class="modal-backdrop" id="entryModal" hidden><div class="modal"><button class="close-btn" id="closeModal">×</button><p class="eyebrow">记录此刻</p><h2>写下今天的心情</h2><form id="entryForm"><label>标题<input name="title" required placeholder="今天发生了什么？" /></label><label>内容<textarea name="content" required placeholder="把想说的话留在这里..." rows="6"></textarea></label><div class="form-row"><label>心情<select name="mood"><option>平静</option><option>开心</option><option>充满能量</option><option>有点低落</option><option>疲惫</option></select></label><label>分类<select name="category"><option value="life">生活日常</option><option value="work">工作与成长</option><option value="thought">灵感思考</option></select></label></div><label>标签 <input name="tags" placeholder="例如：阅读、散步（用逗号分隔）" /></label><button class="primary-btn submit-btn" type="submit">保存日记 <span>↗</span></button></form></div></div>
+  <input type="file" id="restoreInput" accept="application/json,.json" hidden />
   <div class="toast" id="toast">日记已保存，自动整理完成 ✦</div>
   <script src="app.js"></script>
 </body>
