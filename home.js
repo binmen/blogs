@@ -1,0 +1,1 @@
+document.querySelectorAll('.toggle').forEach(button=>button.addEventListener('click',()=>button.classList.toggle('on')));document.querySelectorAll('.scene').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('.scene').forEach(item=>item.classList.remove('active'));button.classList.add('active')}));
