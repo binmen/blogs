@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>拾光 · 你的日记空间</title>
+  <meta name="description" content="一个安静、清晰的日记记录空间" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">✦</span><span>拾光</span></div>
+      <p class="brand-sub">把每一天，留给自己</p>
+      <nav class="nav" aria-label="主导航">
+        <button class="nav-item active" data-view="home"><span>⌂</span> 日记首页</button>
+        <button class="nav-item" data-view="calendar"><span>▦</span> 时间轴</button>
+        <button class="nav-item" data-view="insights"><span>◒</span> 我的整理</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="streak-card"><div class="streak-icon">☀</div><div><strong id="streakCount">3 天</strong><small>连续记录</small></div><span>↗</span></div>
+        <button class="settings"><span>⚙</span> 设置</button>
+        <div class="profile"><div class="avatar">林</div><div><strong>林小满</strong><small>我的日记</small></div><span>•••</span></div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar"><div class="mobile-brand"><span class="brand-mark">✦</span>拾光</div><div class="topbar-actions"><button class="icon-btn" aria-label="通知">♧</button><button class="avatar mini">林</button></div></header>
+      <section class="page" id="homeView">
+        <div class="welcome-row"><div><p class="eyebrow">星期三，2024年06月19日</p><h1>早上好，林小满 <span>☼</span></h1><p class="muted">今天也值得被好好记住。</p></div><button class="primary-btn" id="newEntryBtn"><span>＋</span> 写一篇日记</button></div>
+        <div class="stats-grid"><div class="stat-card"><span class="stat-label">日记总数</span><strong id="totalCount">24</strong><span class="stat-note">篇</span><div class="sparkline pink"></div></div><div class="stat-card"><span class="stat-label">本月记录</span><strong id="monthCount">8</strong><span class="stat-note">篇</span><div class="sparkline orange"></div></div><div class="stat-card"><span class="stat-label">最常出现的情绪</span><strong class="mood-stat">平静</strong><span class="stat-note">最近 30 天</span><div class="mood-dots">● ● ● ● ●</div></div></div>
+        <div class="content-grid"><section class="recent-section"><div class="section-heading"><div><h2>最近的日记</h2><p>你的生活，正在慢慢成为故事</p></div><button class="text-btn" id="viewAllBtn">查看全部 <span>→</span></button></div><div class="filter-row"><div class="search"><span>⌕</span><input id="searchInput" placeholder="搜索日记..." /></div><select id="filterSelect"><option value="all">全部日记</option><option value="work">工作</option><option value="life">生活</option><option value="thought">思考</option></select></div><div id="entriesList" class="entries-list"></div></section><aside class="right-column"><div class="quote-card"><span class="quote-mark">“</span><p>我们生活的每一天，都是生命中最年轻的一天。</p><small>— 玛丽·安·拉德马赫</small></div><div class="organize-card"><div class="organize-head"><div><h3>自动整理</h3><p>让回忆井然有序</p></div><span class="magic">✧</span></div><div class="topic-list"><div><span class="topic-dot lavender"></span><span>生活日常</span><strong>12</strong></div><div><span class="topic-dot peach"></span><span>工作与成长</span><strong>7</strong></div><div><span class="topic-dot blue"></span><span>灵感思考</span><strong>5</strong></div></div><button class="outline-btn" id="organizeBtn">查看整理结果 <span>→</span></button></div><div class="calendar-card"><div class="calendar-head"><h3>六月 2024</h3><span>‹　›</span></div><div class="weekdays"><span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span></div><div class="days"><span class="dim">26</span><span class="dim">27</span><span class="dim">28</span><span class="dim">29</span><span class="dim">30</span><span class="dim">31</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span class="today">19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span></div></div></aside></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="entryModal" hidden><div class="modal"><button class="close-btn" id="closeModal">×</button><p class="eyebrow">记录此刻</p><h2>写下今天的心情</h2><form id="entryForm"><label>标题<input name="title" required placeholder="今天发生了什么？" /></label><label>内容<textarea name="content" required placeholder="把想说的话留在这里..." rows="6"></textarea></label><div class="form-row"><label>心情<select name="mood"><option>平静</option><option>开心</option><option>充满能量</option><option>有点低落</option><option>疲惫</option></select></label><label>分类<select name="category"><option value="life">生活日常</option><option value="work">工作与成长</option><option value="thought">灵感思考</option></select></label></div><label>标签 <input name="tags" placeholder="例如：阅读、散步（用逗号分隔）" /></label><button class="primary-btn submit-btn" type="submit">保存日记 <span>↗</span></button></form></div></div>
+  <div class="toast" id="toast">日记已保存，自动整理完成 ✦</div>
+  <script src="app.js"></script>
+</body>
+</html>
